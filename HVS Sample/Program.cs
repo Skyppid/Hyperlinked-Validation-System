@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace HVS_Sample
 {
     static class Program
     {
-        /// <summary>
-        /// Der Haupteinstiegspunkt für die Anwendung.
-        /// </summary>
+        /// <summary> Main entry-point for this application. </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainFrm());
+            Application.Run(new MainForm());
         }
     }
 }
