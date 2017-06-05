@@ -1,31 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace HyperlinkedValidationSystem
 {
     public static class Extensions
     {
-        public static PropertyInfo GetProperty(this object obj, string title)
+        /// =================================================================================================
+        /// <summary> An object extension method that gets a property. </summary>
+        /// <param name="obj">   The object to act on. </param>
+        /// <param name="name"> The name. </param>
+        /// <returns> The property. </returns>
+        /// =================================================================================================
+        public static PropertyInfo GetProperty(this object obj, string name)
         {
-            return obj.GetType().GetProperty(title);
+            return obj.GetType().GetProperty(name);
         }
     }
 
-    /*
-     * This code was copied from codeplex as help for using flaged enums.
-     * Sorry but i don´t know the article anymore. If i find it, i will notice it here in later versions.
-     */
+    /// <summary> Enumeration extension methods. </summary>
     public static class EnumerationExtensions
     {
-        //checks if the value contains the provided type
-        public static bool Has<T>(this System.Enum type, T value)
+        public static bool Has<T>(this Enum type, T value)
         {
             try
             {
-                return (((int)(object)type & (int)(object)value) == (int)(object)value);
+                return ((int) (object) type & (int) (object) value) == (int) (object) value;
             }
             catch
             {
@@ -33,12 +32,11 @@ namespace HyperlinkedValidationSystem
             }
         }
 
-        //checks if the value is only the provided type
-        public static bool Is<T>(this System.Enum type, T value)
+        public static bool Is<T>(this Enum type, T value)
         {
             try
             {
-                return (int)(object)type == (int)(object)value;
+                return (int) (object) type == (int) (object) value;
             }
             catch
             {
@@ -46,12 +44,11 @@ namespace HyperlinkedValidationSystem
             }
         }
 
-        //appends a value
-        public static T Add<T>(this System.Enum type, T value)
+        public static T Add<T>(this Enum type, T value)
         {
             try
             {
-                return (T)(object)(((int)(object)type | (int)(object)value));
+                return (T) (object) ((int) (object) type | (int) (object) value);
             }
             catch (Exception ex)
             {
@@ -59,16 +56,15 @@ namespace HyperlinkedValidationSystem
                     string.Format(
                         "Could not append value from enumerated type '{0}'.",
                         typeof(T).Name
-                        ), ex);
+                    ), ex);
             }
         }
 
-        //completely removes the value
-        public static T Remove<T>(this System.Enum type, T value)
+        public static T Remove<T>(this Enum type, T value)
         {
             try
             {
-                return (T)(object)(((int)(object)type & ~(int)(object)value));
+                return (T) (object) ((int) (object) type & ~(int) (object) value);
             }
             catch (Exception ex)
             {
@@ -76,7 +72,7 @@ namespace HyperlinkedValidationSystem
                     string.Format(
                         "Could not remove value from enumerated type '{0}'.",
                         typeof(T).Name
-                        ), ex);
+                    ), ex);
             }
         }
     }

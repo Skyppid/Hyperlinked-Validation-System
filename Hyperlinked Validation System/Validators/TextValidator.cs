@@ -1,21 +1,21 @@
-﻿using System;
-using System.Reflection;
-
-namespace HyperlinkedValidationSystem.Validators
+﻿namespace HyperlinkedValidationSystem.Validators
 {
+    /// <summary> A text validator. </summary>
     public static class TextValidator
     {
+        /// =================================================================================================
         /// <summary>
-        /// Validates single text on emptyness.
-        /// Required parameters: BaseValue (typeof Property-/FieldInfo), MustBeEmpty (typeof bool)
+        ///     Validates single text on emptyness. Required parameters: BaseValue (typeof Property-
+        ///     /FieldInfo), MustBeEmpty (typeof bool)
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj"> . </param>
+        /// <returns> True if it succeeds, false if it fails. </returns>
+        /// =================================================================================================
         public static bool Validate(ValidationObject obj)
         {
-            string pi = (string) obj.Parameters["BaseValue"];
+            var pi = (string) obj.Parameters["BaseValue"];
 
-            if ((bool)obj.Parameters["MustBeEmpty", false])
+            if ((bool) obj.Parameters["MustBeEmpty", false])
                 return string.IsNullOrEmpty(pi);
 
             if (pi == null)
@@ -23,19 +23,20 @@ namespace HyperlinkedValidationSystem.Validators
             return pi.Length > 0;
         }
 
-
+        /// =================================================================================================
         /// <summary>
-        /// Validates the equality of base and reference-text.
-        /// Required parameters: BaseValue (typeof Property-/FieldInfo), ReferenceValue (typeof Property-/FieldInfo),
-        /// TextValidator:Invert (typeof bool).
+        ///     Validates the equality or inequality (if parameter is set) of base and reference-text.
+        ///     Required parameters: BaseValue (typeof Property-/FieldInfo), ReferenceValue (typeof
+        ///     Property-/FieldInfo), TextValidator:Invert (typeof bool).
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static bool ValidateTextOfTwo(ValidationObject obj)
+        /// <param name="obj"> . </param>
+        /// <returns> True if it succeeds, false if it fails. </returns>
+        /// =================================================================================================
+        public static bool ValidateEquality(ValidationObject obj)
         {
-            string baseVal = (string)obj.Parameters["BaseValue"];
-            string refVal = (string) obj.Parameters["ReferenceValue"];
-            bool invert = (bool) obj.Parameters["TextValidator:Invert", false];
+            var baseVal = (string) obj.Parameters["BaseValue"];
+            var refVal = (string) obj.Parameters["ReferenceValue"];
+            var invert = (bool) obj.Parameters["TextValidator:Invert", false];
 
             return invert ? baseVal != refVal : baseVal == refVal;
         }

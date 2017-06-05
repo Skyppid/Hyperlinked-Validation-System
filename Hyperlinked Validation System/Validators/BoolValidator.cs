@@ -1,25 +1,32 @@
-﻿/*
- * Autor: Manuel E. (Twisted Arts)
- * Homepage: http://twistedarts.bplaced.net/ 
- */
+﻿using HyperlinkedValidationSystem.Parameters;
 
 namespace HyperlinkedValidationSystem.Validators
 {
+    /// <summary> A boolean validator. </summary>
     public static class BoolValidator
     {
         public static ParameterCollection Default =
             new ParameterCollection(new StaticParameter("BoolValidator:Invert", false));
 
+        /// =================================================================================================
         /// <summary>
-        /// Required parameters: BaseValue (typeof bool), ReferenceValue (typeof bool), BoolValidator:Invert (typeof bool).
+        ///     <para>
+        ///         Required parameters: BaseValue (typeof bool), ReferenceValue (typeof bool).
+        ///     </para>
+        ///     <para>
+        ///         Optional parameters: BoolValidator:Invert (typeof bool).
+        ///     </para>
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">
+        ///     The <see cref="ValidationObject" /> which should be validated.
+        /// </param>
+        /// <returns> True if it succeeds, false if it fails. </returns>
+        /// =================================================================================================
         public static bool Validate(ValidationObject obj)
         {
-            bool invert = (bool) obj.Parameters["BoolValidator:Invert", false];
-            bool baseValue = (bool)obj.Parameters["BaseValue"];
-            bool referenceValue = (bool)obj.Parameters["ReferenceValue"];
+            var invert = (bool) obj.Parameters["BoolValidator:Invert", false];
+            var baseValue = (bool) obj.Parameters["BaseValue"];
+            var referenceValue = (bool) obj.Parameters["ReferenceValue"];
 
             return invert ? baseValue != referenceValue : baseValue == referenceValue;
         }

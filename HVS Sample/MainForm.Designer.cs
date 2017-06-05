@@ -1,6 +1,6 @@
 ﻿namespace HVS_Sample
 {
-    partial class mainFrm
+    partial class MainForm
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -247,7 +247,7 @@
             this.Controls.Add(this.txb_name);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "mainFrm";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HVS Sample Form";
             this.Load += new System.EventHandler(this.mainFrm_Load);

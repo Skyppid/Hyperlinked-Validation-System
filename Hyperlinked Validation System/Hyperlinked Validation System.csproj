@@ -57,7 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionCollection.cs" />
+    <Compile Include="Actions\ActionCollection.cs" />
+    <Compile Include="Actions\ActionBase.cs" />
+    <Compile Include="Actions\InvokeAction.cs" />
+    <Compile Include="Actions\PropertyChangeAction.cs" />
+    <Compile Include="Actions\SwitchAction.cs" />
+    <Compile Include="Actions\ActionTrigger.cs" />
     <Compile Include="DesignTime\ControlTypeConverter.cs" />
     <Compile Include="DesignTime\LinkStructUIEditor.cs">
       <SubType>Form</SubType>
@@ -73,7 +78,11 @@
     <Compile Include="HVS.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ParameterCollection.cs" />
+    <Compile Include="Parameters\ParameterBase.cs" />
+    <Compile Include="Parameters\ParameterCollection.cs" />
+    <Compile Include="Parameters\PresetParameters.cs" />
+    <Compile Include="Parameters\ReflectedParameter.cs" />
+    <Compile Include="Parameters\StaticParameter.cs" />
     <Compile Include="ValidationObject.cs" />
     <Compile Include="LinkCondition.cs" />
     <Compile Include="LinkObject.cs" />
@@ -82,7 +91,6 @@
     <Compile Include="Validators\BoolValidator.cs" />
     <Compile Include="Validators\EmailValidator.cs" />
     <Compile Include="Validators\IntValidator.cs" />
-    <Compile Include="Validators\ValidationObjectValidator.cs" />
     <Compile Include="Validators\TextValidator.cs" />
   </ItemGroup>
   <ItemGroup>
