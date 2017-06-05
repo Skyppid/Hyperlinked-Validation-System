@@ -46,6 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>4</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -57,6 +58,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionCollection.cs" />
+    <Compile Include="DesignTime\ControlTypeConverter.cs" />
+    <Compile Include="DesignTime\LinkStructUIEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignTime\LinkStructUIEditor.Designer.cs">
+      <DependentUpon>LinkStructUIEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DesignTime\LinkStructUITypeEditor.cs" />
+    <Compile Include="DesignTime\PropertyInfoTypeConverter.cs" />
+    <Compile Include="DesignTime\ValidatorTypeConverter.cs" />
+    <Compile Include="DesignTime\ValidatorUITypeEditor.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="HVS.cs">
       <SubType>Component</SubType>
@@ -90,7 +102,11 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DesignTime\LinkStructUIEditor.resx">
+      <DependentUpon>LinkStructUIEditor.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
